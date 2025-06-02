@@ -5,7 +5,8 @@ const { Usuario } = db;
 
 const authService = {
   async login(email, password) {
-    const userInstance = await Usuario.findOne({ where: { email } });
+      const cleanEmail = email.trim().toLowerCase(); // ✅ Línea 1
+    const userInstance = await Usuario.findOne({ where: { email: cleanEmail } });
     if (!userInstance) throw new Error("Credenciales incorrectas");
 
     const isPasswordValid = await bcrypt.compare(
