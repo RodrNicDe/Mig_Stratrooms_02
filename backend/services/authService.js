@@ -1,11 +1,14 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import db from "../config/database.js";
+
 const { Usuario } = db;
 
 const authService = {
   async login(email, password) {
-      const cleanEmail = email.trim().toLowerCase(); // ✅ Línea 1
+    // ✅ Paso 2: Normalizar el correo
+    const cleanEmail = email.trim().toLowerCase();
+
     const userInstance = await Usuario.findOne({ where: { email: cleanEmail } });
     if (!userInstance) throw new Error("Credenciales incorrectas");
 
