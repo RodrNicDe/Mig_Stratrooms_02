@@ -18,7 +18,7 @@ const app = express();
 // Configurar CORS para permitir solicitudes desde el frontend
 app.use(
   cors({
-    origin: "http://localhost:5173", // Permite solicitudes desde este origen
+    origin: "https://mig-stratrooms-02-1.onrender.com", // Permite solicitudes desde este origen
     methods: ["GET", "POST", "PUT", "DELETE"], // Métodos HTTP permitidos
     credentials: true, // Si necesitas enviar cookies o encabezados de autenticación
   })
